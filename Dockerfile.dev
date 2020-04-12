@@ -33,7 +33,7 @@ RUN pipenv install
 
 USER root
 
-RUN export PATH="/root/docker-basics/start_api.sh:$PATH"
+# RUN export PATH="/root/docker-basics/start_api.sh:$PATH"
 # && \
     #  export PATH="/root/.pyenv /versions/3.6.5:$PATH"
 RUN ls -ahl /root
@@ -41,3 +41,5 @@ RUN ls -ahl /root
 RUN rm -rf .cache
 
 COPY . .
+
+

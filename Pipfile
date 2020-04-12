@@ -14,8 +14,8 @@ psycopg2-binary = "*"
 celery = "*"
 redis = "*"
 pyjwt = "==1.7.1"
-psycopg2 = "==2.7.5"
 coverage = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,0 +1,46 @@
+language: python
+
+python:
+  - "3.6"
+
+addons:
+  postgresql: "9.6"
+
+services:
+  - postgresql
+  - docker
+# before_install:
+#   - docker build -t docker-basics -f Dockerfile .
+
+install:
+  - pip install pipenv
+  - pip install coveralls
+  - pipenv install
+
+# Run tests
+before_script:
+  - psql -c "create database $DB_NAME;" -U $DB_USER
+  - psql -c "ALTER USER $DB_USER WITH PASSWORD '$DB_PASSWORD';" -U $DB_USER
+  - python manage.py migrate
+script:
+  - coverage run --source=app manage.py test
+
+  - python -m coverage report -m
+
+after_success:
+  - coveralls
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker_basics"
+  env: "DockerBasics-env-1"
+  bucket_name: "elasticbeanstalk-us-east-2-310263286605"
+  bucket_path: "docker_basics"
+  on:
+    branch: master
+
+  access_key_id:
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
