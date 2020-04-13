@@ -10,8 +10,13 @@ export PATH="$PATH:$PYTHON_BIN_PATH"
 pip3 install pipenv 
 pipenv install
 '''
-        sh '''echo \'+ + + + Setup the database + + + + + +\' &&
-service postgresql start && \\
+        sh '''echo \'+ + + + Setup the database + + + + + +\'
+
+
+brew services start postgresql
+
+
+
 echo \' ++++++++++++++++++++++ Environment Ready ++++++++++++++++++++++\''''
       }
     }
