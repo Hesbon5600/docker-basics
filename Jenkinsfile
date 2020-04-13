@@ -5,7 +5,8 @@ pipeline {
       steps {
         echo 'Building'
         sh '''echo \' ++++++++++++++++++++++ Install dependancies ++++++++++++++++++++++\' && \\
-python3.6 -m pipenv install
+pip3 install pipenv && \\
+pipenv install
 '''
         sh '''echo \'+ + + + Setup the database + + + + + +\' &&
 service postgresql start && \\
