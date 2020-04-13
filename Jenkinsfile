@@ -15,6 +15,7 @@ pipenv install'''
     stage('Test') {
       steps {
         echo 'Testing'
+        sh 'pipenv --version'
       }
     }
 
