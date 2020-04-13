@@ -112,3 +112,4 @@ db.sqlite3
 *_db/
 *_jenkins/
 .history/
+reports/

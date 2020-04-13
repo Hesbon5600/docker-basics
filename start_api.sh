@@ -3,7 +3,7 @@
 # sleep 10
 # ls -a
 source /root/.local/share/virtualenvs/docker-basics-*/bin/activate
-export $(grep -v '^#' .env | xargs)
+# export $(grep -v '^#' .env | xargs)
 
 # pipenv shell
 echo "<<<<<<<<<< Export LANG to the Env>>>>>>>>>>"
@@ -31,6 +31,6 @@ echo "<<<<<<<<<<<<<<<<<<<< START Celery >>>>>>>>>>>>>>>>>>>>>>>>"
 
 sleep 5
 echo "<<<<<<<<<<<<<<<<<<<< START API >>>>>>>>>>>>>>>>>>>>>>>>"
-python manage.py runserver 0.0.0.0:8000
+# python manage.py runserver 0.0.0.0:8000
 # Start the API with gunicorn
-# gunicorn --access-logfile '-' --workers 2 -t 3600 manage:app --worker-class gevent -b 0.0.0.0:5000 --reload  &
+gunicorn --bind 0.0.0.0:8000 app.wsgi --reload --access-logfile '-' --workers 2

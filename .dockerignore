@@ -3,3 +3,5 @@
 .env.sample
 .circleci
 tests/
+docker_basics_db/
+my_jenkins/

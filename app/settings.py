@@ -37,12 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django_jenkins',
     'rest_framework',
     'app',
     'app.apis',
     'app.apis.authentication'
 ]
+PROJECT_APPS = ['app.apis', ]
 
 MIDDLEWARE = [
     # 'corsheaders.middleware.CorsMiddleware',

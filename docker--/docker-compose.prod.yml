@@ -1,0 +1,59 @@
+version: "2.1"
+services:
+  database:
+    restart: always
+    image: postgres:10.1
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=backend
+      - POSTGRES_DB=docker
+    volumes:
+      - ./docker_basics_db:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    expose:
+      - "5433"
+    networks:
+      - back-end
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - back-end
+  app:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+      # - "127.0.0.1:8000:8000"
+    image: app-image
+    volumes:
+      - .:/docker-basics
+    depends_on:
+      - redis
+      - database
+    entrypoint: ["/bin/bash", "-c", "/docker-basics/start_api.sh"]
+    stdin_open: true
+    tty: true
+    networks:
+      - back-end
+networks:
+  back-end:
+  # celery:
+  #   restart: always
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   image: app-image
+  #   volumes:
+  #     - .:/docker-basics-celery
+  #   container_name: cl01
+  #   # command: celery -A app worker -l info
+  #   command: ['celery', '-A', 'app', 'worker', '-l', 'INFO']
+  #   links:
+  #     - redis
+  #     - app
+
