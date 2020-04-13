@@ -9,8 +9,8 @@ pipeline {
 export PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin" && \\
 export PATH="$PATH:$PYTHON_BIN_PATH"'''
         sh '''echo \' ++++++++++++++++++++++ Install dependancies ++++++++++++++++++++++\'
-pip install pipenv --user
-python pipenv install
+pip install pipenv 
+pipenv install
 '''
         sh '''echo \'+ + + + Setup the database + + + + + +\' &&
 service postgresql start && \\
