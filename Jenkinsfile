@@ -4,6 +4,12 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building'
+        sh '''echo \' ++++++++++++++++++++++ Install dependancies ++++++++++++++++++++++\' && \\
+python3.6 -m pipenv install
+'''
+        sh '''echo \'+ + + + Setup the database + + + + + +\' &&
+service postgresql start && \\
+echo \' ++++++++++++++++++++++ Environment Ready ++++++++++++++++++++++\''''
       }
     }
 
