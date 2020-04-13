@@ -4,11 +4,9 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building'
-        sh '''echo \'+ + + + + Export Vars + + + +\' && \\
-
-export PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin" && \\
-export PATH="$PATH:$PYTHON_BIN_PATH"'''
         sh '''echo \' ++++++++++++++++++++++ Install dependancies ++++++++++++++++++++++\'
+export PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
+export PATH="$PATH:$PYTHON_BIN_PATH"
 pip3 install pipenv 
 pipenv install
 '''
