@@ -11,6 +11,7 @@ echo "<<<<<<<<<< Export LANG to the Env>>>>>>>>>>"
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
+sleep 30
 echo "<<<<<<<< Database Setup and Migrations Starts >>>>>>>>>"
 # Run database migrations
 python manage.py migrate

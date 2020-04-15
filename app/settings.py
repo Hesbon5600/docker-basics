@@ -88,10 +88,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('DB_NAME'),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
+        'NAME': os.getenv('POSTGRES_DB'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
         'HOST': os.getenv('DB_HOST'),
-        'USER': os.getenv('DB_USER'),
+        'USER': os.getenv('POSTGRES_USER'),
         'PORT': '5432',
     }
 }
@@ -148,3 +148,6 @@ CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', '')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

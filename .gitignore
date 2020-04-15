@@ -113,3 +113,11 @@ db.sqlite3
 *_jenkins/
 .history/
 reports/
+.elasticbeanstalk/
+.awscli-bundle/
+*-bundle.*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

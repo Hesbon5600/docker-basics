@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, include
-from .views import DockerAPIView
+from .views import DockerAPIView, DockerGetAPIView
 
 urlpatterns = [
     path('docker', DockerAPIView.as_view(), name='test-docker'),
+    path('<str:user_id>', DockerGetAPIView.as_view(), name='test-docker-get'),
 ]
