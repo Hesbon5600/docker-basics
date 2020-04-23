@@ -11,7 +11,7 @@ echo "<<<<<<<<<< Export LANG to the Env>>>>>>>>>>"
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
-sleep 30
+sleep 3
 echo "<<<<<<<< Database Setup and Migrations Starts >>>>>>>>>"
 # Run database migrations
 python manage.py migrate
@@ -21,11 +21,19 @@ sleep 5
 echo "<<<<<<< Database Setup and Migrations Complete >>>>>>>>>>"
 echo " "
 
+
+# echo "<<<<<<< Remove any pending celery tasks >>>>>>>>>>"
+# echo " "
+
+
+# celery purge -f
+
+# sleep 5
 echo " "
 echo "<<<<<<<<<<<<<<<<<<<< START Celery >>>>>>>>>>>>>>>>>>>>>>>>"
 
 # start Celery worker
- celery -A app worker -B -l info &
+ celery -A app worker -l info --pool=gevent --concurrency=500 &
 
 # # start celery beat
 # celery -A celery_conf.celery_periodic_scheduler beat --loglevel=info &

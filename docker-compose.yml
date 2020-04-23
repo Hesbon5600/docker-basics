@@ -43,9 +43,9 @@ services:
     environment:
       - CELERY_BROKER_URL=redis://redis
       - CELERY_RESULT_BACKEND=redis://redis
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=backend
-      - POSTGRES_DB=docker
+      - DB_USER=postgres
+      - DB_PASSWORD=backend
+      - DB_name=docker
       - DB_HOST=database
 
   # celery:

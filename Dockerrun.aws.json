@@ -6,20 +6,7 @@
       "image": "hesbon5600/docker-basics-app-image:1.0",
       "hostname": "app",
       "essential": false,
-      "memory": 128,
-      "links": ["database"]
-    },
-    {
-      "name": "database",
-      "image": "postgres:10.1",
-      "essential": false,
-      "memory": 128,
-      "portMappings": [
-        {
-          "hostPort": 5432,
-          "containerPort": 5432
-        }
-      ]
+      "memory": 128
     },
     {
       "name": "proxy",

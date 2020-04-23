@@ -17,6 +17,7 @@ pyjwt = "==1.7.1"
 coverage = "*"
 gunicorn = "*"
 django-jenkins = "*"
+gevent = "*"
 
 [requires]
 python_version = "3.7"
